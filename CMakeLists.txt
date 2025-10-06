@@ -9,12 +9,9 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
-find_package(sensor_msgs REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(std_srvs REQUIRED)
-find_package(geometry_msgs REQUIRED)
 
 # ##############################################################################
 # Generate ROS messages, ROS2 interfaces and IDL files #
@@ -32,7 +29,7 @@ file(GLOB PX4_SRVS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${SRVS_DIR}/*.srv")
 rosidl_generate_interfaces(${PROJECT_NAME}
 	${PX4_MSGS}
 	${PX4_SRVS}
-	DEPENDENCIES builtin_interfaces
+	DEPENDENCIES builtin_interfaces sensor_msgs
 	ADD_LINTER_TESTS
 )
 

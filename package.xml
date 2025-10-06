@@ -15,7 +15,6 @@
   <depend>ros_environment</depend>
   <depend>sensor_msgs</depend>
   <depend>std_msgs</depend>
-  <depend>std_srvs</depend>
 
   <exec_depend>rosidl_default_runtime</exec_depend>
 
