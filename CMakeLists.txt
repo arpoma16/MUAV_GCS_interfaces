@@ -11,6 +11,8 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(builtin_interfaces REQUIRED)
+find_package(action_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 # ##############################################################################
@@ -25,11 +27,16 @@ file(GLOB PX4_MSGS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${MSGS_DIR}/*.msg")
 set(SRVS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/srv")
 file(GLOB PX4_SRVS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${SRVS_DIR}/*.srv")
 
+# get all action files
+set(ACTIONS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/action")
+file(GLOB PX4_ACTIONS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${ACTIONS_DIR}/*.action")
+
 # Generate introspection typesupport for C and C++ and IDL files
 rosidl_generate_interfaces(${PROJECT_NAME}
 	${PX4_MSGS}
 	${PX4_SRVS}
-	DEPENDENCIES builtin_interfaces sensor_msgs
+	${PX4_ACTIONS}
+	DEPENDENCIES builtin_interfaces sensor_msgs action_msgs std_msgs
 	ADD_LINTER_TESTS
 )
 

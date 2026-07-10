@@ -1,0 +1,18 @@
+# goal
+uint8 payload_index 1       # see enum E_DjiMountPosition in dji_typedef.h
+string init_date            # ISO 8601: '2024-01-15T10:30:00'
+string finish_date          # ISO 8601: '2024-01-15T12:00:00'
+string file_type            # 'image', 'video', 'all'
+bool delete_after_download  # delete files from SD card after download
+---
+# result
+bool success
+int32 files_downloaded
+int32 files_failed
+string mission_folder       # absolute path to the created mission folder
+---
+# feedback
+int32 current_file_index
+int32 total_files
+string current_file_name
+float32 progress_percent
