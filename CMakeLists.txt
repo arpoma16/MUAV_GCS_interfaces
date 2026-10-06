@@ -21,15 +21,15 @@ find_package(rosidl_default_generators REQUIRED)
 
 # get all msg files
 set(MSGS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/msg")
-file(GLOB PX4_MSGS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${MSGS_DIR}/*.msg")
+file(GLOB PX4_MSGS CONFIGURE_DEPENDS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${MSGS_DIR}/*.msg")
 
 # get all srv files
 set(SRVS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/srv")
-file(GLOB PX4_SRVS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${SRVS_DIR}/*.srv")
+file(GLOB PX4_SRVS CONFIGURE_DEPENDS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${SRVS_DIR}/*.srv")
 
 # get all action files
 set(ACTIONS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/action")
-file(GLOB PX4_ACTIONS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${ACTIONS_DIR}/*.action")
+file(GLOB PX4_ACTIONS CONFIGURE_DEPENDS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${ACTIONS_DIR}/*.action")
 
 # Generate introspection typesupport for C and C++ and IDL files
 rosidl_generate_interfaces(${PROJECT_NAME}
